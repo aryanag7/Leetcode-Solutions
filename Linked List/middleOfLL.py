@@ -25,28 +25,28 @@ class Solution:
 
     # TC:- O(N+N/2)
     # SC:- O(1)
-    # def middleOfLL(self, head):
-    #     if head is None or head.next is None:
-    #         return head
-    #     count=0
-    #     p=head
+    def middleOfLL(self, head):
+        if head is None or head.next is None:
+            return head
+        count=0
+        p=head
 
-    #     while p:
-    #         count+=1
-    #         p=p.next
+        while p:
+            count+=1
+            p=p.next
         
-    #     mid=count//2
+        mid=count//2
 
-    #     p=head
-    #     i=0
-    #     while i<mid:
-    #         p=p.next
-    #         i+=1
+        p=head
+        i=0
+        while i<mid:
+            p=p.next
+            i+=1
         
-    #     return p.val
+        return p.val
 
 
-    #Single pass TC:- O(N)
+    # Single pass TC:- O(N)
     # SC:- O(1)
     def middleOfLL(self, head):
         p=head
@@ -58,8 +58,6 @@ class Solution:
         
         return p.val
 
-
-        
 
     
     def take_input(self):
