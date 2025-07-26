@@ -21,7 +21,8 @@ class ListNode:
         self.val = val
         self.next = next
 class Solution:
-    
+
+    # TC:- O(MAX(LEN(L1),LEN(L2)))
     def addTwoNumbers(self,l1,l2):
         carry=0
         dummyNode = ListNode(-1)
