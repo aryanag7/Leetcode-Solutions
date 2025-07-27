@@ -43,36 +43,34 @@ class Solution:
         p=head
         q=head
 
-        while q and q.next:
+        while q.next and q.next.next:
             p=p.next
             q=q.next.next
         
         return p
     
-    # TC:- O(N) + O(N) + O(N/2) ~ O(N)
-    #SC:- O(1)
-    def reorderList(self, head):
-        middleNode= self.middleOfLL(head)
-        reversedHead= self.reverseList(middleNode.next)
-        middleNode.next=None
+    # TC:- O(N)
+    # SC:-  O(1)
+    def isPalindrome(self, head):
+        middleNode = self.middleOfLL(head)
+        reversedHead = self.reverseList(middleNode.next)
+        middleNode.next =None
+
+        l1=head
+        l2=reversedHead
 
 
-        first=head
-        second=reversedHead
+        while l2:
+            if l1.val!=l2.val:
+                return False
 
-        while second:
-            t1=first.next
-            first.next=second
-            first= t1
-
-            t2=second.next
-            second.next = first
-            second=t2
+            l1=l1.next
+            l2=l2.next
         
-        return head
+        return  True
 
 
-    
+
     def take_input(self):
         head=None
         tail=None
@@ -102,8 +100,9 @@ class Solution:
     
 s1= Solution()
 head=s1.take_input()
-newHead = s1.reorderList(head)
-s1.printLL(newHead)
+# head2=s1.take_input()
+print(s1.isPalindrome(head))
+# s1.printLL(new_head)
 
 
 
