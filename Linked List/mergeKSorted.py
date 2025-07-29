@@ -21,48 +21,30 @@ class ListNode:
         self.val = val
         self.next = next
 class Solution:
-    # TC:- O(N) Ultimately
-    # SC:- O(LEN(L1) + LEN(L2))
-    # def mergeTwoLists(self, list1, list2):
-    #     if list1 is None:
-    #         return list2
-    #     if list2 is None:
-    #         return list1
-        
-    #     dummyNode=ListNode(-1)
-    #     curr=dummyNode
 
-    #     while list1 and list2:
-    #         if list1.val<=list2.val:
-    #             newNode= ListNode(list1.val)
-    #             curr.next=newNode
-    #             list1=list1.next
-    #         else:
-    #             newNode= ListNode(list2.val)
-    #             curr.next=newNode
-    #             list2=list2.next
-            
-    
-    #         curr=curr.next
+
+    # TC:- O(N* LOGN) - N is total number of nodes in all linked lists, N lists each of size k so O( N*K) 
+    # SC:- O( N*K)  + O( N*K)  for new linkedlist
+    # def mergeKLists(self, lists):
+    #     temp=[]
         
-    #     while list1:
-    #         newNode= ListNode(list1.val)
-    #         curr.next=newNode
-    #         curr=curr.next
-    #         list1=list1.next
+    #     for li in lists:
+    #         p=li
+    #         while p:
+    #             temp.append(p.val)
+    #             p=p.next
         
-    #     while list2:
-    #         newNode= ListNode(list2.val)
-    #         curr.next=newNode
+    #     temp.sort()
+
+    #     curr=dummyNode= ListNode(-1) 
+
+    #     for ele in temp:
+    #         node= ListNode(ele)
+    #         curr.next=node
     #         curr=curr.next
-    #         list2=list2.next
         
     #     return dummyNode.next
 
-    
-
-    # TC:- O(N1+N2) if both travels till the end in worst case
-    # SC:- O(1) No new nodes creation, just link changes
     def mergeTwoLists(self, list1, list2):
         if list1 is None:
             return list2
@@ -91,6 +73,40 @@ class Solution:
         
         return dummyNode.next
 
+    """
+    First two lists: N + N = 2N
+
+    Then result with third: 2N + N = 3N
+
+    Then with fourth: 3N + N = 4N
+
+
+    Up to the K-th list: KN
+
+    The total work becomes: N(1+2+3+...+K)= ( N *  K(K+1)/2 ~ O(N⋅K ^2 )
+    
+    """
+
+
+    # SC:- O(1) 
+    def mergeKLists(self, lists):
+        if len(lists)==0:
+            return None
+        
+        head=lists[0]
+
+
+        # Assume:- N different lists, each of size K
+        for i in range(1,len(lists)):
+
+            # N1+N2
+            head= self.mergeTwoLists(head,lists[i])
+        
+        return head
+
+
+
+        
 
 
     def take_input(self):
@@ -121,9 +137,8 @@ class Solution:
     
     
 s1= Solution()
-head1=s1.take_input()
-head2=s1.take_input()
-new_head = s1.mergeTwoLists(head1,head2)
+head=s1.take_input()
+new_head = s1.reverseKGroup(head,3)
 s1.printLL(new_head)
 
 
