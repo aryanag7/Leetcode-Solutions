@@ -59,6 +59,8 @@ class Solution:
             for i in range(ind,n):
                 nums[ind],nums[i]=nums[i],nums[ind]
                 
+
+                # ind+1 is next position for which we need to try all numbers from ind till n
                 permuteHelper(nums,ind+1, ds+[nums[ind]],n)
 
                 nums[ind],nums[i]=nums[i],nums[ind]
