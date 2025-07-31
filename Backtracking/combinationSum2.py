@@ -49,7 +49,7 @@ class Solution:
             
         
 
-        # TC:- O(2^n), nlogn to sort
+        # TC:- O(2^n  * N), nlogn to sort
         # SC:- O(N) stack space, O(n * 2^n) for ans
         ans=[]
         candidates.sort()

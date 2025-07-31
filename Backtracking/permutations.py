@@ -19,7 +19,7 @@ sys.stdout = open(os.path.join(current_dir, 'output.txt'), 'w')
 
 class Solution:
 
-    # TC:- O(N! * N)
+    # TC:- O(N! * N) 
     # SC:- O(N) stack space, O(N) map array
     # def permute(self, nums):
     #     ans=[]
@@ -42,6 +42,14 @@ class Solution:
 
     #     return ans
     
+
+
+
+# At each recursive call, ds + [nums[i]] creates a new list by copying ds.
+# This copying takes O(N) time, contributing to the overall O(N * N!) complexity.
+
+
+
 
 
 
