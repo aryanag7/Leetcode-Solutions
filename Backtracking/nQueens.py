@@ -18,6 +18,8 @@ sys.stdout = open(os.path.join(current_dir, 'output.txt'), 'w')
 
 
 class Solution:
+
+    # TC:- O(3N)
     def safeToPlaceQueen(self,n,row,col,mat):
         i=row
         j=col
@@ -51,7 +53,21 @@ class Solution:
         return True
           
 
-    def solveNQueensHelper(self,n,col,mat,ans):
+    # TC:- O(1) - Using Hashing     
+    def safeToPlaceQueen(self,n,row,col,mat,rowMap,downDiagonal,upDiagonal):
+        if upDiagonal[(n-1)+(row-col)]:
+            return False
+
+        if rowMap[row]:
+            return False
+
+        if downDiagonal[row+col]:
+            return False
+
+        return True
+        
+
+    def solveNQueensHelper(self,n,col,mat,ans,rowMap,downDiagonal,upDiagonal):
         if col==n:
             temp=[]
             for i in range(n):
@@ -66,16 +82,28 @@ class Solution:
             
         
         for row in range(0,n):
-            if self.safeToPlaceQueen(n,row,col,mat):
+            if self.safeToPlaceQueen(n,row,col,mat,rowMap,downDiagonal,upDiagonal):
                 mat[row][col]="Q"
-                self.solveNQueensHelper(n,col+1,mat,ans)
-                mat[row][col]="."
+                rowMap[row]=True
+                downDiagonal[row+col]= True
+                upDiagonal[(n-1)+(row-col)] = True
 
-                
+                self.solveNQueensHelper(n,col+1,mat,ans,rowMap,downDiagonal,upDiagonal)
+
+                mat[row][col]="."
+                rowMap[row]=False
+                downDiagonal[row+col]= False
+                upDiagonal[(n-1)+(row-col)] = False
+
+
+    #TC:- O(N^N)
     def solveNQueens(self, n):
         mat=[["." for j in range(n)] for i in range(n)]
+        rowMap= [False]*n
+        downDiagonal = [False]*(2*n-1)
+        upDiagonal= [False]*(2*n-1)
         ans=[]
-        self.solveNQueensHelper(n,0,mat,ans)
+        self.solveNQueensHelper(n,0,mat,ans,rowMap,downDiagonal,upDiagonal)
         return ans
         
 
