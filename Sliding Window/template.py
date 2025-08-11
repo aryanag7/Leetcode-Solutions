@@ -120,7 +120,7 @@ def SlidingWindowTemplate2(arr,k):
     
     return ans
 
-# can replace while with if to remove one element from the left so that length decreases by 1 and not beyond that otherwise have to build up again
+# can replace while with if to remove one element from the left so and not beyond that otherwise have to build up again
 
 
 
