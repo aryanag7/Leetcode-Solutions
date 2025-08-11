@@ -67,7 +67,7 @@ class Solution:
 
 
     #optimization over the above code - as number of zeros will increase just by 1 when window is invalid, lets say zeros is 2  and k=2 so,
-    # zeros<=k but when new ele is 0 3<=2, we just need to remove one element from the left (potentially zero) to make it a valid window again and making sure that we dont go DOWN BEYOND our ans length (IMPPPPPP)
+    # zeros<=k but when new ele is 0 3<=2, we just need to remove one element from the left (potentially zero) to make it a valid window again and making sure that the WINDOW SIZE  dont go DOWN BEYOND our ans length (IMPPPPPP). we will increase it if condition satisified but will not let it go beyond what we found ansgit 
 
     # TC:- O(N)
     # SC:- O(1)
