@@ -136,7 +136,7 @@ print(SlidingWindowTemplate2(arr,14))
 
 
 
-# Pattern 2:-No of subarrays <Given condition>
+# Pattern 2:-No of subarrays <Given condition> (sum=k)
 # no of subarrays with sum<=k - no of subarrays with sum<= (k-1) 
 
 
