@@ -104,14 +104,7 @@ class Solution:
         
 
         return ans
-    
 
-
-
-
-
-
-    
 s1 = Solution()
 s = "ABBB"
 k = 2
