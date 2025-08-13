@@ -42,13 +42,15 @@ class Solution:
     # count subarrays ending at r with variable l (bw window l - r)
     # ex: 1 0 0 1 ->   1 0 0 1,   0 0 1,   0 1,   1 ending fixed at 1
 
+    #there wont be any duplicates as the subarrays are from l to ending at r
+
     # count subarrays with sum<=k means with sum =k and sum<k which is total count lets say
     # now we need need to subtract the sum<k part which is sum <= (k-1)
 
     # TC:- O ( 2 * (N + N))
     # SC:- O(1) 
     def numSubarrays(self, nums, goal):  
-        if goal-1 <0:
+        if goal <0:
             return 0
         ans=0
         l=0
