@@ -43,7 +43,7 @@ class Solution:
         r=0
         n=len(nums)
         odds=0
-
+        # Sliding window approach
         while r<n:
             if nums[r]%2==1:
                 odds+=1
