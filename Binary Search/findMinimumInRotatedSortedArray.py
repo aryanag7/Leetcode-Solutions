@@ -1,0 +1,55 @@
+import bisect
+import sys
+import os
+import math
+from collections import defaultdict
+from collections import Counter
+from typing import Deque
+from collections import deque
+from itertools import accumulate
+
+# Get the current file's directory
+current_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Redirect stdin and stdout
+sys.stdin = open(os.path.join(current_dir, 'input.txt'), 'r')
+sys.stdout = open(os.path.join(current_dir, 'output.txt'), 'w')
+
+
+
+class Solution:
+    def findMin(self, nums):
+        low=0
+        n=len(nums)
+        high=n-1
+        ans= float('inf')
+
+        while low<=high:
+            mid = low + (high-low)//2
+
+
+            #search space already sorted
+            if nums[low]<= nums[high]:
+                ans = min(ans, nums[low])
+                break
+
+            elif nums[mid]>= nums[low]:
+                ans = min (ans, nums[low])
+                low = mid+1
+            else:
+                ans = min(ans, nums[mid])
+                high = mid-1
+        
+        return ans
+        
+
+   
+
+    
+s1 = Solution()
+nums =[3,1,2]
+print(s1.findMin(nums))
+
+    
+
+
