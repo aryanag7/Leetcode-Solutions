@@ -30,7 +30,7 @@ class Solution:
         return ans
     
     
-    # TC: O(LOGN)
+    # TC: O(LOGX)
     # SC:- O(1)
     #can also return high as low will move towards the non answer part and will point to the first non answer and high will move towards the answer part and will point to the last answer
     def mySqrt(self, x):
@@ -48,16 +48,13 @@ class Solution:
                 high=mid-1
             
         return ans
-
-
-        
-            
-
     
 s1 = Solution()
 x=36
 print(s1.mySqrt(x))
 
     
+
+
 
 
