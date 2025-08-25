@@ -50,7 +50,7 @@ class Solution:
         return False
 
             
-    # Tc:- O(N +  LOG(M)) - AS Binary search happens only once for a row, not for all rows
+    # Tc:- O(N *  LOG(M)) - as we are not sure if target is in row, it maybe or maybe not unlike search in 2d matrix part 1.
     # SC:- O(1)
     def searchMatrix(self, matrix, target):
         n=len(matrix)
@@ -64,22 +64,20 @@ class Solution:
 
         return False
     
-
-    # same as above almost
-
-    # TC:- O(N + M) - ROWS ALREADY SORTED
+    
+    # TC:- O(N + M)
     # SC:- O(1)
     def searchMatrix(self, matrix, target):
         n=len(matrix)
         m=len(matrix[0])
 
         i=0
-        j= m-1
+        j=m-1
 
         while i<n and j>=0:
-            if matrix[i][j]==target:
+            if matrix[i][j]== target:
                 return True
-
+            
             elif target > matrix[i][j]:
                 i+=1
             
@@ -87,35 +85,9 @@ class Solution:
                 j-=1
         
         return False
+    
 
-
-    # TC:- OLOG(N* M)) - ROWS ALREADY SORTED
-    # SC:- O(1)
-    def searchMatrix(self, matrix, target):
-        n=len(matrix)
-        m=len(matrix[0])
-
-        low=0
-        high= n*m -1
-
-        while low<=high:
-            mid = low + (high-low)//2
-
-            i= mid//m
-            j= mid%m
-
-            if matrix[i][j]== target:
-                return True
-
-            elif matrix[i][j] > target:
-                high = mid-1
-            
-            else:
-                low = mid +1 
-
-        return False
-
-
+ 
             
 
 
