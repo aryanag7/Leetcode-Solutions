@@ -55,6 +55,26 @@ class Solution:
         return ans 
 
 
+    
+    #IF THE INPUT ROWS ARE ALREADY SORTED, CAN FURTHER OPTIMIZE TO O(N+M)
+    def rowAndMaximumOnes(self, mat):
+        n=len(mat)
+        m=len(mat[0])
+
+        i=0
+        j=m-1
+
+        ans=-1
+
+        while i<n and j>=0:
+            if mat[i][j]==1:
+                ans = max(ans, i)
+                j-=1
+            else:
+                i+=1
+        
+        return ans
+
 
             
         
