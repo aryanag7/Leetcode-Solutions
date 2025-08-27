@@ -41,7 +41,7 @@ class TimeMap:
         return ans
     
 
-    #IN PYTHON 10^7 OPERATIONS IN 1 SECOND UNLIKE C++ 10^8 OPERATIONS
+    #IN PYTHON 10^7 OPERATIONS IN 1 SECOND UNLIKE C++ 10^8 OPERATIONS IN 1 SEC.
 
 
     #O(log(N)) per call, worst case; 10^5(set calls) + 10^5 * log(10^5) 
