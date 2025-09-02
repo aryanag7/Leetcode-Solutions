@@ -38,6 +38,8 @@ class Solution:
         return False
 
 
+    # TC:- O(V + 2E)
+    # SC:- O(3V) - can use single array to make 0,1,2,3 for visited, path visited, safe
     def eventualSafeNodes(self, graph):
         V= len(graph)
 
