@@ -19,6 +19,8 @@ sys.stdout = open(os.path.join(current_dir, 'output.txt'), 'w')
 
 
 class Solution:
+    # TC: - O(E LOG(V)) WORST CASE E IS NUMBER OF EDGES AND V ARE VERTICIES
+    # SC:- O(V)  + O(V) 
     def dijkstra(self, V, edges, src):
         dist = [float('inf')]*V
 
@@ -34,10 +36,14 @@ class Solution:
         pq = [(0,src)]
         dist[src]=0
 
+        # E = V^2
+
+        # total nodes in pq - V
         while len(pq)>0:
             curr_dist, node = heapq.heappop(pq)
 
-            for ch in adj[node]:
+            #imagine for a graph worst possible number of edges, it would be V-1 for a dense graph where every node is connected to every other node in the graph
+            for ch    in adj[node]:
                 child = ch[0]
                 wt = ch[1]
                 new_dist = curr_dist + wt
