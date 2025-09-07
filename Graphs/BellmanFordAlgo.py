@@ -35,6 +35,7 @@ class Solution:
                     dist[v] = dist[u] + wt
 
         
+        #to check if there is any negative cycle - it will still reduce weight on the Nth iteration although we would have had the shortest path in N-1 iterations
         for edge in edges:
             u= edge[0]
             v=edge[1]
