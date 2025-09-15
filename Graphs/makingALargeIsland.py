@@ -60,6 +60,9 @@ class DisjointSet:
         ulti_par_u = self.findUltimateParent(u)
         ulti_par_v = self.findUltimateParent(v)
 
+        if ulti_par_u == ulti_par_v:
+            return 
+
         if self.size[ulti_par_u] < self.size[ulti_par_v]:
             self.parent[ulti_par_u]= ulti_par_v
             self.size[ulti_par_v]+= self.size[ulti_par_u]
