@@ -30,6 +30,8 @@ class Solution:
     def Dfs_markVisited(self, src,adj, visited):
         visited[src]=1
 
+        print(src,end=" ")
+
         for ch in adj[src]:
             if visited[ch]==0:
                 self.Dfs_markVisited(ch, adj, visited)
@@ -70,6 +72,7 @@ class Solution:
             if visited[node]==0:
                 self.Dfs_markVisited(node, revAdj, visited)
                 components+=1
+                print()
         
         return components
 
