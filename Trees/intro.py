@@ -116,5 +116,182 @@ def level_order_traversal(root):
 
 
 
+# Preorder, Inorder, Postorder - Iterative
 
-level_order_traversal(root)
+
+#Iterative Preorder using Stack
+#TC:- O(N)
+#SC:- O(N) ~ O(height) if skewed tree
+def iterative_preorder(root):
+    stack = [root]
+    preorder = []
+    while len(stack)>0:
+        node = stack.pop()
+        preorder.append(node.data)
+
+        if node.right:
+            stack.append(node.right)
+        
+
+        if node.left:
+            stack.append(node.left)
+    
+    return preorder
+
+
+
+#Iterative Inorder using Stack
+#TC:- O(N)
+#SC:- O(N) ~ O(height) if skewed tree
+def iterative_inorder(root):
+    stack = []
+    inorder = []
+    node = root
+
+    while True:
+        if node is not None:
+            stack.append(node)
+            node = node.left
+        
+        else:
+            if len(stack)==0:
+                break
+            ele = stack.pop()
+            inorder.append(ele.data)
+
+            node = ele.right
+    
+    return inorder
+    
+
+    
+
+#Iterative Postorder using 2 Stacks
+#TC:- O(N)
+#SC:- O(N) + O(N) 
+def iterative_postorder(root):
+    stack1= [root]
+    stack2 = []
+
+    while len(stack1)>0:
+        node = stack1.pop()
+        stack2.append(node)
+
+        if node.left:
+            stack1.append(node.left)
+        
+        if node.right:
+            stack1.append(node.right)
+    
+    postorder = []
+
+    while len(stack2)>0:
+        postorder.append(stack2.pop().data)
+    
+
+    return postorder
+
+
+
+#Iterative Postorder using 1 Stack
+# Postorder is Left Right Root - do the opposite Root Right Left and reverse it
+#TC:- O(N)
+#SC:- O(N) 
+def iterative_postorder_oneStack(root):
+    stack = [root]
+    postorder = []
+
+    while len(stack)>0:
+        node  = stack.pop()
+        postorder.append(node.data)
+
+
+        if node.left:
+            stack.append(node.left)
+        
+        if node.right:
+            stack.append(node.right)
+    
+    postorder.reverse()
+
+    return postorder
+
+
+
+
+
+
+#Preorder, Inorder, Postorder all in 1 go (RECURIVE)
+# TC:- O(N)
+# SC:- O(3N) + N STACK SPACE
+def all_traversals_recursive(root):
+
+    def recurse_all_traversals(root,pre,ino,post):
+        if root is None:
+            return 
+        
+        pre.append(root.data)
+
+
+        recurse_all_traversals(root.left,pre,ino,post)
+
+        ino.append(root.data)
+
+        recurse_all_traversals(root.right,pre,ino,post)
+
+        post.append(root.data)
+
+
+    
+    pre = []
+    ino = []
+    post = []
+    recurse_all_traversals(root,pre, ino, post)
+
+    print(pre)
+    print(ino)
+    print(post)
+
+
+
+
+
+
+#Preorder, Inorder, Postorder all in 1 go (iterative)
+# TC:- O(3N)
+# SC:- O(3N)
+def all_traversals_iterative(root):
+
+    stack = [(root,1)]
+    preorder = []
+    inorder = []
+    postorder = []
+
+    while len(stack)>0:
+        node,count = stack.pop()
+
+        if count == 1:
+            preorder.append(node.data)
+            stack.append((node,count+1))
+
+            if node.left:
+                stack.append((node.left,1))
+
+        
+        elif count == 2:
+            inorder.append(node.data)
+            stack.append((node,count+1))
+
+            if node.right:
+                stack.append((node.right,1))
+                
+        else:
+            postorder.append(node.data) 
+    
+    print(preorder)
+    print(inorder)
+    print(postorder)
+
+
+
+all_traversals_iterative(root)
