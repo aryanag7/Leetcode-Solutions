@@ -73,7 +73,7 @@ class Solution:
         self.right_view(root.left,ans,level+1,max_level)
 
 
-    def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
+    def rightSideView(self, root):
         ans=[]
         self.right_view(root,ans,0,[float('-inf')])
         return ans
