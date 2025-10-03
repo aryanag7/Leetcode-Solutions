@@ -47,6 +47,9 @@ class Solution:
 
 
     #REMOVED THE extra space complexity by maintaining a counter
+    
+    # For kth largest element:
+    # -> n-k+1
     #can also do reverse of inorder
     # RIGHT ROOT LEFT. -same counter logic
     def inOrder_traversal(self,root,count, k):
