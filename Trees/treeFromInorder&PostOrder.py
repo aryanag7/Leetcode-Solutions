@@ -37,43 +37,44 @@ class Solution:
 
         return root
     
-    def buildTreeHelper(self, preorder, inorder, preSt, preEnd, inSt, inEnd, inorder_index):
-        if preSt > preEnd or inSt > inEnd:
-            return None
 
-        rootValue = preorder[preSt]
+    def buildTreeHelper(self,postorder, inorder, postSt, postEnd, inSt, inEnd,inorder_index):
+
+        if inSt > inEnd:
+            return None
         
+        rootValue = postorder[postEnd]
+
         root = TreeNode(rootValue)
 
         # index = None
-        # for i in range(inSt,inEnd+1):
+        # for i in range(inSt, inEnd+1):
         #     if inorder[i] == rootValue:
         #         index = i
         #         break
 
-        #reduces TC from O(N*N) to O(N) - just need to find the index of rootval in inorder - hash it
         index = inorder_index[rootValue]
-        
+
         l = index - inSt
+        
+        root.left  = self.buildTreeHelper(postorder, inorder, postSt, postSt+l-1, inSt, index-1,inorder_index)
 
-
-        root.left = self.buildTreeHelper(preorder, inorder, preSt+1, preSt+l, inSt, index-1, inorder_index)
-
-
-        root.right = self.buildTreeHelper(preorder, inorder, preSt+l+1, preEnd, index+1, inEnd, inorder_index)
+        root.right  = self.buildTreeHelper(postorder, inorder, postSt+l, postEnd-1, index+1, inEnd,inorder_index)
 
         return root
+
 
 
     # TC:- O(N*N)- as for every recursive call searching in inorder 
     #optimized using hashmap O(N)
     # SC:- O(N) - stack space and O(N) hashmap to store index of every value of inorder
-    def buildTree(self, preorder, inorder):
+    def buildTree(self, postorder, inorder):
         inorder_index = { val:i for i,val in enumerate(inorder)}
 
-        inSt, inEnd, preSt, preEnd = 0,len(inorder)-1,0,len(preorder)-1
+        postSt, postEnd, inSt, inEnd = 0, len(postorder)-1, 0, len(inorder)-1
 
-        return self.buildTreeHelper(preorder, inorder, preSt, preEnd, inSt, inEnd, inorder_index)
+        return self.buildTreeHelper(postorder, inorder, postSt, postEnd, inSt, inEnd,inorder_index)
+
     
     def preorder_traversal(self,root):
         if root is None:
@@ -95,8 +96,8 @@ class Solution:
 s1= Solution()
 # root = s1.take_input()
 inorder = [40,20,50,10,60,30]
-preorder = [10,20,40,50,30,60]
-root = s1.buildTree(preorder, inorder)
+postorder = [40,50,20,60,30,10]
+root = s1.buildTree(postorder, inorder)
 s1.preorder_traversal(root)
 
 
