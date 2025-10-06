@@ -91,7 +91,7 @@ class Solution:
         new_max = max(root.val, left_max, right_max)
         new_min = min(root.val, left_min, right_min)
 
-        if root.val >= left_max or right_min <= root.val:
+        if left_max >= root.val  or right_min <= root.val:
             return new_max, new_min, False
 
         if left_balanced and right_balanced:
