@@ -93,7 +93,7 @@ class Solution:
         
         prev = dummy = ListNode(-1)
 
-    # K*N log K - as you would be ultimately pushing all nodes into heap
+    # K*N log K - as you would be ultimately pushing all nodes into heap but heap size is only K
         while len(minHeap) >0:
             val, node = heapq.heappop(minHeap)
 
