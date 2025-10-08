@@ -80,6 +80,7 @@ class Solution:
 
     # TC:- O(KlogK + k*N log K) - N is size of each list and K is number of lists
     # SC:- O(k*N) + O(K*N)
+    #heap size if K instead of K*N
     def mergeKLists(self, lists):
         if len(lists)==0:
             return None
