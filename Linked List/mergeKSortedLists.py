@@ -51,7 +51,7 @@ class Solution:
         
         return dummyNode.next
     
-    # TC:- O(NlogN) - N is total nodes of all lists pushed into minheap and popped out N times       N = k * N - k lists each of size N assuming
+    # TC:- O(NlogN) - N is total nodes of all lists pushed into minheap and popped out N times       N = k * N ->  k lists each of size N assuming
     # SC:- O(k*N) + O(K*N)
     #better than pairwise merge using merge 2 lists TC : O(K*k*N)
     def mergeKLists(self, lists):
@@ -75,6 +75,8 @@ class Solution:
         
         return dummyNode.next
     
+
+
 
 
 
