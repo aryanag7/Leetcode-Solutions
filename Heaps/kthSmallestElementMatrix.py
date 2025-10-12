@@ -52,7 +52,7 @@ class Solution:
 
 
 
-  #K - WAY MERGE SIMILAR TO MERGE K SORTED LISTS
+  # K - WAY MERGE SIMILAR TO MERGE K SORTED LISTS
   # TC:- O(N * logN) + O(K * log(N))
   # SC:- O(N) - N is number of rows
   def kthSmallest(self, matrix, k):
