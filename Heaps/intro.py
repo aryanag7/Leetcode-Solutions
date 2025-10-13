@@ -48,14 +48,12 @@ class PriorityQueue():
         
         #non leaf nodes
         for index in range((n//2)-1, -1,-1):
-            self.heapify(index,arr)
+            self.heapify(index,arr,n)
 
         return arr
 
 
-    def heapify(self,parentIndex,heap):
-        n=len(heap)
-
+    def heapify(self,parentIndex,heap,n):
         while True:
         
             leftIndex=  (2*parentIndex)+1
@@ -76,6 +74,26 @@ class PriorityQueue():
             heap[parentIndex],heap[idxToSwap]= heap[idxToSwap],heap[parentIndex]
 
             parentIndex=idxToSwap
+
+    
+    # TC:-  #O(N * logN)
+    # sc:- O(1) - in place
+    def heapSort(self,arr):
+        #build max heap out of unsorted array
+        #O(N)
+        n=len(arr)
+        for i in range((n//2)-1,-1,-1):
+            self.heapify(i,arr,n)
+        
+        #O(N * logN)
+        for i in range(n-1,0,-1):
+            print(arr)
+            arr[0], arr[i] =  arr[i], arr[0]
+            self.heapify(0,arr,i)
+
+        return arr
+
+
         
     
     def up_heapify(self):
@@ -161,5 +179,11 @@ print(pq.removeMin())
 pq.print_heap()
 
 
-print(pq.build_heap([54,53,55,52,50]))
+# print(pq.build_heap([54,53,55,52,50]))
 
+
+
+#heap sort
+# arr = [12, 6, 10, 5, 1, 9]
+arr = [5,2,6]
+print(pq.heapSort(arr))
