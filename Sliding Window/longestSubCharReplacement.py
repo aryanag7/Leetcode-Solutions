@@ -63,6 +63,7 @@ class Solution:
                 if d[s[l]]==0:
                     d.pop(s[l])
                 
+                maxFreq = 0
                 for key in d:
                     maxFreq = max(maxFreq, d[key] )
                 l+=1
