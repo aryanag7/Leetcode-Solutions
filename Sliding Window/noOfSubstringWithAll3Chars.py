@@ -83,7 +83,7 @@ class Solution:
 
     
 s1 = Solution()
-s ="bbacba"
+s ="abcabc"
 print(s1.numberOfSubstrings(s))
 
     
